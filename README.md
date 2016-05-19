@@ -2,9 +2,10 @@
 A drag and drop example of native WebRTC on iOS
 
     // your call view controller .h
+    #import <BWRTCViewController.h>
+
     @interface CallViewController : BWRTCViewController <BWRTCViewControllerDelegate>
     @end
-
 
     // your call view controller .m
     - (void)viewDidLoad {
