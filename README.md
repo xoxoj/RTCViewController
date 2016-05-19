@@ -17,11 +17,13 @@ These classes are meant as a starting point for native WebRTC on iOS. Simply ext
     // your call view controller .m
     - (void)viewDidLoad {
         [super viewDidLoad];
-        if ([BWStorage rt][@"call"][@"target"]) {
+        if (/*this is the caller*/) {
             [super callerSequence];
             
             // wait until callee is ready to receive your offer, then call:
             [super startNegotiating];
+        } else {
+            /*callee side doesn't have to do a thing*/
         }
     }
     
