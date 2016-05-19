@@ -14,9 +14,6 @@ These classes are meant as a starting point for native WebRTC on iOS. Simply ext
     @end
 
 
-
-
-
     // your call view controller .m
     - (void)viewDidLoad {
         [super viewDidLoad];
