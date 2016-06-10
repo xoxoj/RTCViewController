@@ -195,28 +195,28 @@
 
 - (void) updateViews {
     dispatch_async(MAIN, ^(void) {
-        CGRect localVideoFrame = self.view.frame;
-        CGRect remoteVideoFrame = self.view.frame;
+        CGRect remoteVideoFrame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height / 2);
+        CGRect localVideoFrame = CGRectMake(0, self.view.frame.size.height / 2, self.view.frame.size.width, self.view.frame.size.height / 2);
         
-        if (localVideoFrame.size.width > localVideoFrame.size.height) {
-            localVideoFrame.size.width = 320;
-            localVideoFrame.size.height = 240;
-        } else {
-            localVideoFrame.size.width = 240;
-            localVideoFrame.size.height = 320;
-        }
+        // if (localVideoFrame.size.width > localVideoFrame.size.height) {
+        //     localVideoFrame.size.width = 320;
+        //     localVideoFrame.size.height = 240;
+        // } else {
+        //     localVideoFrame.size.width = 240;
+        //     localVideoFrame.size.height = 320;
+        // }
         // create renderers
         if (!localVideoView) {
-            localVideoView = [[OGLViewController alloc] initWithFrame:self.view.frame andTextureParameter:GL_LINEAR];
+            localVideoView = [[OGLViewController alloc] initWithFrame:localVideoFrame andTextureParameter:GL_LINEAR];
             [self.view addSubview:localVideoView.view];
-            [self.view sendSubviewToBack:localVideoView.view];
+            // [self.view sendSubviewToBack:localVideoView.view];
         }
         [localVideoTrack addRenderer:localVideoView];
         
         if (!remoteVideoView) {
             remoteVideoView = [[OGLViewController alloc] initWithFrame:remoteVideoFrame andTextureParameter:GL_NEAREST];
             [self.view addSubview:remoteVideoView.view];
-            [self.view sendSubviewToBack:remoteVideoView.view];
+            // [self.view sendSubviewToBack:remoteVideoView.view];
         }
         if (remoteVideoTrack) {
             [remoteVideoTrack addRenderer:remoteVideoView];
